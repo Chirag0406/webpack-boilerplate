@@ -20,7 +20,7 @@ module.exports = {
   // Webpack will bundle all JavaScript into this file
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
 
   // Default mode for Webpack is production.
@@ -106,9 +106,13 @@ module.exports = {
   },
   plugins: [
     // new CleanWebpackPlugin(['dist/*']) for < v2 versions of CleanWebpackPlugin
+    new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new HtmlWebpackPlugin({
+      template: './index.html',
+      inject: true,
+      chunks: ['index'],
+      filename: 'index.html'
     }),
-         new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new MiniCssExtractPlugin({
       filename: "bundle.css"
     }),
