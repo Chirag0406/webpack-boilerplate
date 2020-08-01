@@ -2,6 +2,8 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 // This is the main configuration object.
 // Here you write different options and tell Webpack what to do
@@ -9,7 +11,11 @@ module.exports = {
 
   // Path to your entry point. From this file Webpack will begin his work
   entry: './src/javascript/app.js',
-
+  devtool: 'inline-source-map',
+  
+  devServer: {
+    contentBase: './dist'
+  },
   // Path and filename of your result bundle.
   // Webpack will bundle all JavaScript into this file
   output: {
@@ -99,6 +105,10 @@ module.exports = {
     ]
   },
   plugins: [
+    // new CleanWebpackPlugin(['dist/*']) for < v2 versions of CleanWebpackPlugin
+    new HtmlWebpackPlugin({
+    }),
+         new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new MiniCssExtractPlugin({
       filename: "bundle.css"
     }),

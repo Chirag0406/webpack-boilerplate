@@ -1,3 +1,5 @@
 import '../sass/app.scss';
 
-alert('black')
+console.log('Welcome to Website');
+
+// alert('black')

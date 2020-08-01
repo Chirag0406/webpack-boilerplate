@@ -3,7 +3,9 @@
 @import "~bootstrap/scss/bootstrap";
 
 body{
-    background-color:red;
+    //background-color:red;
     font-family: 'Roboto', sans-serif;
-    //background-image: url('../images/portfolio-details-2.jpg');
+    background-image: url('../images/body_background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
 }
